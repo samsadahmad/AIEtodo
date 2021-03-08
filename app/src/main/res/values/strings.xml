@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AIE Todo</string>
+    <string name="task_title">Task List</string>
+    <string name="add_title">Add Task</string>
+    <string name="edit_title">Edit Task</string>
+
+    <!--Error message-->
+    <string name="error_blank">Edit Task</string>
+    <string name="error_duplicate">Task name can\'t be duplicate</string>
+    <string name="task_saved_updated">Task saved/updated successfully</string>
+    <string name="task_empty_error">There\'s no task added yet. Please click on floating "+" icon to create task</string>
+</resources>

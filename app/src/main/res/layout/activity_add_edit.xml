@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="task"
+            type="com.aie.aietodo.data.db.entity.Task"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_main_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/add_task_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp">
+
+                    <EditText
+                        android:id="@+id/task_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@{task.taskName}"
+                        android:singleLine="true"
+                        android:hint="Task Name" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp">
+
+                <EditText
+                    android:id="@+id/task_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:singleLine="true"
+                    android:clickable="true"
+                    android:editable="false"
+                    android:text="@{task.taskDate}"
+                    android:focusable="false"
+                    android:hint="Task Date"
+                    android:onClick="onDatePicker" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/add_task_creator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp">
+
+                    <EditText
+                        android:id="@+id/task_creator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@{task.taskCreator}"
+                        android:singleLine="true"
+                        android:hint="Task creator" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp">
+
+            <Button
+                android:id="@+id/Add_Contact_Cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:onClick="onCancelBtnClick"
+                android:text="Cancel"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/Add_Contact_Save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:onClick="onSaveBtnClick"
+                android:text="Save"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

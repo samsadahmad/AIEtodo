@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="task"
+            type="com.aie.aietodo.data.db.entity.Task"/>
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.task.TaskViewActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@{task.taskName}"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/tv_creator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_task"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@{task.taskCreator}"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:text="@{task.taskDate}"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>
