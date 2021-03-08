@@ -101,7 +101,7 @@ class AddEditTaskActivity : BaseActivity(), KodeinAware {
                 val task = Task(id, taskName, taskCreator, taskDate)
                 coroutines.main{
                     viewModel.updateTask(task)
-                    toast(resources.getString(R.string.task_saved_updated))
+                    toast(resources.getString(R.string.task_updated))
                 }
                 finish()
             } else {
@@ -114,7 +114,7 @@ class AddEditTaskActivity : BaseActivity(), KodeinAware {
                         toast(resources.getString(R.string.error_duplicate))
                         return@main
                     }else{
-                        toast(resources.getString(R.string.task_saved_updated))
+                        toast(resources.getString(R.string.task_saved))
                         finish()
                     }
                 }

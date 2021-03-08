@@ -7,6 +7,7 @@
     <!--Error message-->
     <string name="error_blank">Edit Task</string>
     <string name="error_duplicate">Task name can\'t be duplicate</string>
-    <string name="task_saved_updated">Task saved/updated successfully</string>
+    <string name="task_saved">Task created successfully</string>
+    <string name="task_updated">Task updated successfully</string>
     <string name="task_empty_error">There\'s no task added yet. Please click on floating "+" icon to create task</string>
 </resources>
