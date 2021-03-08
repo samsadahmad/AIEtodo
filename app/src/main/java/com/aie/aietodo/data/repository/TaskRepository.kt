@@ -15,7 +15,6 @@ import kotlinx.coroutines.withContext
 class TaskRepository(
     private val db: AppDatabase
 ) {
-    private val tasks = MutableLiveData<List<Task>>()
 
     /**
      * @method : getTask
