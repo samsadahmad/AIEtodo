@@ -95,50 +95,64 @@ class AddEditTaskActivity : BaseActivity(), KodeinAware {
         val taskName = task_name.getText().toString().trim()
         val taskDate = task_date.getText().toString().trim()
         val taskCreator = task_creator.getText().toString().trim()
-        if (taskName.isEmpty()) {
-            task_name.setError(resources.getString(R.string.error_blank))
-            return
-        }
-        if (taskDate.isEmpty()) {
-            task_date.setError(resources.getString(R.string.error_blank))
-            return
-        }
-        if (taskCreator.isEmpty()) {
-            task_creator.setError(resources.getString(R.string.error_blank))
-            return
-        }
-
-        if (isEditing) {
-            //This block will update task in DB
-            val task = Task(id, taskName, taskCreator, taskDate)
-            coroutines.main{
-                viewModel.updateTask(task)
-                toast(resources.getString(R.string.task_saved_updated))
-            }
-            finish()
-        } else {
-            //This block will check duplicate task and insert into DB
-            val task = Task(taskName, taskCreator, taskDate)
-            coroutines.main{
-                val upsertId = viewModel.saveTask(task)
-                if(upsertId==-1L){
-                    task_name.setError(resources.getString(R.string.error_duplicate))
-                    toast(resources.getString(R.string.error_duplicate))
-                    return@main
-                }else{
+        if (isDataValid(taskName, taskDate, taskCreator)) {
+            if (isEditing) {
+                //This block will update task in DB
+                val task = Task(id, taskName, taskCreator, taskDate)
+                coroutines.main{
+                    viewModel.updateTask(task)
                     toast(resources.getString(R.string.task_saved_updated))
-                    finish()
+                }
+                finish()
+            } else {
+                //This block will check duplicate task and insert into DB
+                val task = Task(taskName, taskCreator, taskDate)
+                coroutines.main{
+                    val upsertId = viewModel.saveTask(task)
+                    if(upsertId==-1L){
+                        task_name.setError(resources.getString(R.string.error_duplicate))
+                        toast(resources.getString(R.string.error_duplicate))
+                        return@main
+                    }else{
+                        toast(resources.getString(R.string.task_saved_updated))
+                        finish()
+                    }
                 }
             }
         }
     }
+
     /**
      * @method : onCancelBtnClick
      * @desc : This method will finish the current activity
      * @param : View
      */
     fun onCancelBtnClick(view: View){
-        // finish the activity
         finish()
+    }
+
+    /**
+     * @method : isDataValid
+     * @desc : This method will validate task data
+     * @param : View
+     */
+    private fun isDataValid(
+        taskName: String,
+        taskDate: String,
+        taskCreator: String
+    ): Boolean {
+        if (taskName.isEmpty()) {
+            task_name.setError(resources.getString(R.string.error_blank))
+            return false
+        }
+        if (taskDate.isEmpty()) {
+            task_date.setError(resources.getString(R.string.error_blank))
+            return false
+        }
+        if (taskCreator.isEmpty()) {
+            task_creator.setError(resources.getString(R.string.error_blank))
+            return false
+        }
+        return true
     }
 }
