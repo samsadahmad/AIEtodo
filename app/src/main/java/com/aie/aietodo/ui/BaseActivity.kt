@@ -12,6 +12,7 @@ import com.aie.aietodo.broadcast.NetworkChangeReceiver
  * @class : BaseActivity
  * @desc : This class created to hold common across all activity
  * and all activity will extends this class
+ * test commit
  * */
 open class BaseActivity: AppCompatActivity()  {
     private lateinit var mNetworkReceiver: NetworkChangeReceiver
